@@ -1,0 +1,53 @@
+.search_div {
+	width: 85%;
+	margin: 30px auto;
+}
+
+.search {
+	width: 100%;
+	height: 35px;
+	border-radius: 5px;
+	border-width: 2px;
+	border-style: solid;
+	font-size: 20px;
+	padding: 0 5px;
+}
+
+.res {
+	width: 90%;
+	margin: 0 auto;
+}
+
+ul {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+li {
+	border-bottom: 1px dashed #CCCCCC;
+	padding: 3px;
+	margin: 10px;
+	font-family: Microsoft YaHei;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+}
+
+span {
+	color: white;
+	background-color: #F44698;
+}
+
+.title {
+	
+	font-size: 25px;
+	color: #666666;
+}
+
+.time {
+	text-align: right;
+	font-size: 18px;
+	color: #DDDDDD
+}
