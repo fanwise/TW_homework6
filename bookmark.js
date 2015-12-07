@@ -17,6 +17,16 @@ $(document).ready(function(){
 	});
  });
 
+
+
+$(document).delegate(".button-delete","click",deletebookmark);
+
+function deletebookmark () {
+	alert('aaa');
+}
+
+
+
 function searchfor (keyword) {
 	var reg = new RegExp("("+keyword+")","i");
 	$.each(bookmarks,function(n,item){
@@ -25,7 +35,7 @@ function searchfor (keyword) {
 			var time = timeconvert(item.created);
 			var title = item.title;
 			title = title.replace(reg,"<span>$1</span>");
-			$("ul").append("<li><p class='title'>"+title+"</p><p class='time'><i>"+time+"</i></p></li>");
+			$("ul").append("<li><p class='title'>"+title+"<button class='button button-raised button-pill button-delete'>-</button></p><p class='time'><i>"+time+"</i></p></li>");
 		}
 	});
 

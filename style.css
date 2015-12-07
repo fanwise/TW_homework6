@@ -1,6 +1,6 @@
 .search_div {
 	width: 85%;
-	margin: 30px auto;
+	margin: 30px auto 10px auto;
 }
 
 .search {
@@ -13,9 +13,24 @@
 	padding: 0 5px;
 }
 
+.button-delete {
+	color: black !important;
+	padding: 0 25px !important;
+	font-size: 30px !important;
+	float: right !important;
+	border-radius: 10px !important;
+}
+
 .res {
 	width: 90%;
 	margin: 0 auto;
+}
+
+.reslength {
+	text-align: center;
+	margin: 0px auto;
+	color: #BBBBBB;
+	font-size: 15px;
 }
 
 ul {
