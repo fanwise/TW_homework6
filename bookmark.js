@@ -5,7 +5,7 @@ $(document).ready(function(){
   		$.each(data,function(n,item){
   			bookmarks.push(item);
   			var time = timeconvert(item.created);
-  			$("ul").append("<li><p class='title'>"+item.title+"</p><p class='time'><i>"+time+"</i></p></li>");
+  			$("ul").append("<li><p class='title'>"+item.title+"</p><p>"+item.address+"</p><p class='time'><i>"+time+"</i></p></li>");
   		});
   	});
 });
@@ -22,9 +22,21 @@ $(document).ready(function(){
 $(document).delegate(".button-delete","click",deletebookmark);
 
 function deletebookmark () {
-	alert('aaa');
+	$('.theme-popover-mask').fadeIn(100);
+	$('.theme-popover').slideDown(200);
 }
 
+
+$(document).ready(function($) {
+	$('.theme-login').click(function(){
+		$('.theme-popover-mask').fadeIn(100);
+		$('.theme-popover').slideDown(200);
+	});
+	$('.theme-poptit .close').click(function(){
+		$('.theme-popover-mask').fadeOut(100);
+		$('.theme-popover').slideUp(200);
+	});
+});
 
 
 function searchfor (keyword) {
