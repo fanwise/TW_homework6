@@ -4,9 +4,8 @@ $(document).ready(function(){
   	$.getJSON("bookmarks.json", function(data){
   		$.each(data,function(n,item){
   			bookmarks.push(item);
-  			var time = timeconvert(item.created);
-  			$("ul").append("<li><p class='title'>"+item.title+"</p><p>"+item.address+"</p><p class='time'><i>"+time+"</i></p></li>");
   		});
+  		searchfor("");
   	});
 });
 
@@ -23,34 +22,41 @@ $(document).delegate(".button-delete","click",deletebookmark);
 
 function deletebookmark () {
 	$('.theme-popover-mask').fadeIn(100);
-	$('.theme-popover').slideDown(200);
+	$('.delete_dialog').slideDown(200);
 }
 
 
 $(document).ready(function($) {
-	$('.theme-login').click(function(){
-		$('.theme-popover-mask').fadeIn(100);
-		$('.theme-popover').slideDown(200);
-	});
-	$('.theme-poptit .close').click(function(){
+	$('.close').click(function(){
 		$('.theme-popover-mask').fadeOut(100);
-		$('.theme-popover').slideUp(200);
+		$('.delete_dialog').slideUp(200);
 	});
 });
 
-
 function searchfor (keyword) {
 	var reg = new RegExp("("+keyword+")","i");
+	var resarray = new Array();
 	$.each(bookmarks,function(n,item){
 		if(item.title.match(reg))
 		{
 			var time = timeconvert(item.created);
 			var title = item.title;
 			title = title.replace(reg,"<span>$1</span>");
-			$("ul").append("<li><p class='title'>"+title+"<button class='button button-raised button-pill button-delete'>-</button></p><p class='time'><i>"+time+"</i></p></li>");
+			resarray.push("<li><p class='title'>"+title+"<button class='button button-raised button-pill button-delete'>-</button></p><p class='address'>"+item.address+"</p><p class='time'><i>"+time+"</i></p></li>");
+			//$("ul").append("<li><p class='title'>"+title+n+"<button class='button button-raised button-pill button-delete'>-</button></p><p class='address'>"+item.address+"</p><p class='time'><i>"+time+"</i></p></li>");
+		}else if(item.address.match(reg)){
+			var time = timeconvert(item.created);
+			var address = item.address;
+			address = address.replace(reg,"<span>$1</span>");
+			resarray.push("<li><p class='title'>"+item.title+"<button class='button button-raised button-pill button-delete'>-</button></p><p class='address'>"+address+"</p><p class='time'><i>"+time+"</i></p></li>");
 		}
 	});
-
+	if(resarray.length > 10)
+	{
+		
+	}
+	$("ul").append(resarray);
+	console.log(resarray.length)
 }
 
 function timeconvert (timestamp) {

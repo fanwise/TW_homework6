@@ -13,41 +13,53 @@
 	padding: 0 5px;
 }
 
-.button-delete {
-	color: black !important;
-	padding: 0 25px !important;
-	font-size: 30px !important;
-	float: right !important;
-	border-radius: 10px !important;
-}
-
-.theme-popover {
-	z-index:9999;
+.delete_dialog {
+	z-index:99999;
 	position:fixed;
-	top:50%;
+	top:40%;
 	left:50%;
-	width:660px;
-	height:360px;
-	margin:-180px 0 0 -330px;
+	margin:-180px 0 0 -300px;
+	width: 600px;
+	height: 260px;
+	font-size: 20px;
+	font-family: Microsoft YaHei;
 	border-radius:5px;
 	border:solid 2px #666;
 	background-color:#fff;
 	display:none;
 	box-shadow: 0 0 10px #666;
 }
-.theme-poptit {
-	border-bottom:1px solid #ddd;
-	padding:12px;
-	position: relative;
+
+.dialog_title {
+	padding: 18px;;
 }
 
-.theme-poptit .close {
+.close {
 	float:right;
 	color:#999;
-	padding:5px;
-	margin:-2px -5px -5px;
-	font:bold 14px/14px simsun;
+	padding:18px;
+	margin:5px;
+	font:bold 20px/14px simsun;
 	text-shadow:0 1px 0 #ddd
+}
+
+.dialog_content {
+	display: block;
+	border-top: 1px solid #ddd;
+	padding: 18px;
+}
+
+.delete_button_ul {
+	display: inline;
+}
+
+.button-delete {
+	color: black !important;
+	padding: 0 25px !important;
+	font-size: 30px !important;
+	float: right !important;
+	border-radius: 10px !important;
+	height: 45px !important;
 }
 
 a {
@@ -68,15 +80,30 @@ a {
 	font-size: 15px;
 }
 
+ol {
+	list-style-type: none;
+	padding-left: 0;
+	width: 380px;
+	margin: 80px auto 0px auto;
+}
+
+.delete_button_ol li{
+	display: inline-block;
+	width: 110px;
+	margin: 0 38px;
+
+}
+
 ul {
 	list-style-type: none;
 	padding-left: 0;
 }
 
-li {
+.res li {
+	height: 45px;
 	border-bottom: 1px dashed #CCCCCC;
 	padding: 3px;
-	margin: 10px;
+	margin: 8px;
 	font-family: Microsoft YaHei;
 }
 
@@ -91,13 +118,24 @@ span {
 }
 
 .title {
-	font-size: 25px;
+	font-size: 20px;
 	color: #666666;
 }
 
+.address {
+	display: inline;
+	width: 70%;
+	float: left;
+}
+
 .time {
+	display: inline;
+	width: 20%;
+	float: right;
+	margin-top: 5px;
+	margin-right: 5px;
 	text-align: right;
-	font-size: 18px;
+	font-size: 12px;
 	color: #DDDDDD
 }
 
