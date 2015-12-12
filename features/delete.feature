@@ -1,5 +1,6 @@
 Feature: Search
 	Scenario: Search csdn
 		* Open the homepage
-		* Search "auto"
-		* Have 1 result
+		* Delete 0 in list
+		* Search "test"
+		* Have 0 result

@@ -128,12 +128,12 @@ function searchfor (keyword) {
 			var time = timeconvert(item.created);
 			var title = item.title;
 			title = title.replace(reg,"<span>$1</span>");
-			resarray.push("<li><p class='title'>"+title+"<button id = 'b"+n+"' class='button button-raised button-pill button-delete'>-</button></p><p class='address'>"+item.address+"</p><p class='time'><i>"+time+"</i></p></li>");
+			resarray.push("<li><p class='title'>"+title+"<button id = 'b"+n+"' class='button button-raised button-pill button-delete'>-</button></p><a href="+item.address+" target='_blank' class='address'>"+item.address+"</a><p class='time'><i>"+time+"</i></p></li>");
 		}else if(item.address.match(reg)){
 			var time = timeconvert(item.created);
 			var address = item.address;
 			address = address.replace(reg,"<span>$1</span>");
-			resarray.push("<li><p class='title'>"+item.title+"<button id = 'b"+n+"' class='button button-raised button-pill button-delete'>-</button></p><p class='address'>"+address+"</p><p class='time'><i>"+time+"</i></p></li>");
+			resarray.push("<li><p class='title'>"+item.title+"<button id = 'b"+n+"' class='button button-raised button-pill button-delete'>-</button></p><a href="+item.address+" target='_blank' class='address'>"+address+"</a><p class='time'><i>"+time+"</i></p></li>");
 		}
 	});
 	$("p.reslength").html("");

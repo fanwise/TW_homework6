@@ -24,3 +24,8 @@ Given(/^Add "([^"]*)" "([^"]*)"$/) do |title, address|
   sleep 1
 end
 
+Given(/^Delete (\d+) in list$/) do | index | 
+  find("#b"+index).click
+  find("#delete_yes").click
+end
+
