@@ -5,6 +5,7 @@ var pageSize = 10;
 var resarray = new Array();
 var deleteIndex = 0;
 
+
 $(document).ready(function(){
 	$.ajax({
        	url:'getdata.php',
@@ -19,7 +20,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   	$(".search").on("input",function(){  
   		$("ul").html("");
-   		searchfor($("input").val());
+   		searchfor($(".search").val());
 	});
 });
 
@@ -45,7 +46,7 @@ $(document).ready(function(){
     	$('.theme-popover-mask').fadeOut(100);
 		$('.delete_dialog').slideUp(200);
 		$("ul").html("");
-   		searchfor($("input").val());
+   		searchfor($(".search").val());
 	});
 });
 
@@ -55,6 +56,45 @@ $(document).ready(function(){
 		$('.delete_dialog').slideUp(200);
 	});
 });
+
+$(document).ready(function(){
+	$("#popadd").on("click",function(){
+    	$('.theme-popover-mask').fadeIn(100);
+		$('.add_dialog').slideDown(200);
+	});
+});
+
+$(document).ready(function(){
+	$("#add_yes").on("click",function(){
+		var t = $(".title_input").val();
+		var a = $(".address_input").val();
+		addbookmark(t,a);
+	});
+});
+
+function addbookmark (t,a) {
+	if(t.length == 0){
+		alert("填写名称");
+	}else if(a.length == 0){
+		alert("填写地址");
+	}else{
+		var timestamp = Math.floor((new Date()).valueOf()/1000);
+		var jsonstr="[{'title':'"+t+"','address':'"+a+"','created':'"+timestamp+"'}]";
+		var jsonarray = eval(jsonstr);
+		bookmarks = jsonarray.concat(bookmarks);
+		$.ajax({
+       		url:'add.php',
+       		type:'POST',
+       		data:{trans_data:JSON.stringify(bookmarks)},    
+       		success:function(data){
+       		}
+    	});
+		$('.theme-popover-mask').fadeOut(100);
+		$('.add_dialog').slideUp(200);
+		$("ul").html("");
+   		searchfor($(".search").val());
+	};
+}
 
 function jumppage () {
 	var id = $(this).attr("id"); 
@@ -66,9 +106,16 @@ function jumppage () {
 
 
 $(document).ready(function($) {
-	$('.close').click(function(){
+	$('.closedelete').click(function(){
 		$('.theme-popover-mask').fadeOut(100);
 		$('.delete_dialog').slideUp(200);
+	});
+});
+
+$(document).ready(function($) {
+	$('.closeadd').click(function(){
+		$('.theme-popover-mask').fadeOut(100);
+		$('.add_dialog').slideUp(200);
 	});
 });
 
@@ -81,19 +128,19 @@ function searchfor (keyword) {
 			var time = timeconvert(item.created);
 			var title = item.title;
 			title = title.replace(reg,"<span>$1</span>");
-			resarray.push("<li><p class='title'>"+title+n+"<button id = 'b"+n+"' class='button button-raised button-pill button-delete'>-</button></p><p class='address'>"+item.address+"</p><p class='time'><i>"+time+"</i></p></li>");
+			resarray.push("<li><p class='title'>"+title+"<button id = 'b"+n+"' class='button button-raised button-pill button-delete'>-</button></p><p class='address'>"+item.address+"</p><p class='time'><i>"+time+"</i></p></li>");
 		}else if(item.address.match(reg)){
 			var time = timeconvert(item.created);
 			var address = item.address;
 			address = address.replace(reg,"<span>$1</span>");
-			resarray.push("<li><p class='title'>"+item.title+n+"<button id = 'b"+n+"' class='button button-raised button-pill button-delete'>-</button></p><p class='address'>"+address+"</p><p class='time'><i>"+time+"</i></p></li>");
+			resarray.push("<li><p class='title'>"+item.title+"<button id = 'b"+n+"' class='button button-raised button-pill button-delete'>-</button></p><p class='address'>"+address+"</p><p class='time'><i>"+time+"</i></p></li>");
 		}
 	});
 	$("p.reslength").html("");
 	$("p.reslength").append("搜索到个"+resarray.length+"结果");
 	$("div.pages").html("");
 	for(var i = 0; i < pageSize; i++)
-		$("ul").append(resarray[i]);
+		$("ul").append(resarray[pageIndex*pageSize+i]);
 	if(resarray.length > 10){
 		totalPages = resarray.length/10;
 		for(var i = 0; i < totalPages; i++)

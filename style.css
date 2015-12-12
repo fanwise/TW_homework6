@@ -13,6 +13,28 @@
 	padding: 0 5px;
 }
 
+.title_input {
+	margin:10px auto;
+	width: 95%;
+	height: 35px;
+	border-radius: 5px;
+	border-width: 2px;
+	border-style: solid;
+	font-size: 20px;
+	padding: 0 5px;
+}
+
+.address_input {
+	margin:10px auto;
+	width: 95%;
+	height: 35px;
+	border-radius: 5px;
+	border-width: 2px;
+	border-style: solid;
+	font-size: 20px;
+	padding: 0 5px;
+}
+
 .delete_dialog {
 	z-index:99999;
 	position:fixed;
@@ -30,11 +52,44 @@
 	box-shadow: 0 0 10px #666;
 }
 
+#add_yes {
+	width: 120px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.add_dialog {
+	z-index:9999;
+	position:fixed;
+	top:40%;
+	left:50%;
+	margin:-180px 0 0 -300px;
+	width: 600px;
+	height: 260px;
+	font-size: 20px;
+	font-family: Microsoft YaHei;
+	border-radius:5px;
+	border:solid 2px #666;
+	background-color:#fff;
+	display:none;
+	box-shadow: 0 0 10px #666;
+}
+
+
 .dialog_title {
 	padding: 18px;;
 }
 
-.close {
+.closedelete {
+	float:right;
+	color:#999;
+	padding:18px;
+	margin:5px;
+	font:bold 20px/14px simsun;
+	text-shadow:0 1px 0 #ddd
+}
+
+.closeadd {
 	float:right;
 	color:#999;
 	padding:18px;
